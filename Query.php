@@ -18,7 +18,7 @@ td {
   text-align: center;
 }
 </style>";
-
+echo str_replace("$","","$14.00");
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -47,12 +47,14 @@ foreach($array as $location){
 			
 			$category = $row["Category"];
 				
-				$sql2 = "SELECT Qty FROM `square_data` where Location = '".$location."' AND Category = '".$category."'";
+				$sql2 = "SELECT Qty, Gross_Sales FROM `square_data` where Location = '".$location."' AND Category = '".$category."'";
 				$result2 = $conn->query($sql2);
 				$Qty = 0;
+				$Sales = 0;
 				if ($result2->num_rows > 0) {
 					while($row = $result2->fetch_assoc()){
 					$Qty += $row["Qty"];
+					$Sales += str_replace("$","",$row["Gross_Sales"]);
 				
 					}
 				}
@@ -62,7 +64,7 @@ foreach($array as $location){
 					<tr>
 					<td>".$category."</td>
 					<td>".$Qty."</td>
-					<td></td>
+					<td>".number_format((float)$Sales, 2, '.', '')."</td>
 				  </tr>
 				 ";
 			
