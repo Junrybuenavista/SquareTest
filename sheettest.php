@@ -8,7 +8,7 @@ $spreadsheetId = '1ogDFBdZV8omFKT6pLXrsgA066-cSPTHV7hi84eu_CqE';
 $range = 'Sheet1!A1:E4';
 
 $values = [
-    ["Item", "Cost", "Stocked", "Ship Date"],
+    ["Item", "Cost", "Stockeds", "Ship Date"],
     ["Wheel", "$20.50", "455", "3/1/2017"],
     ["Door", "$15", "211", "3/15/2016"],
     ["Engine", "$100", "11", "3/20/2016"],
